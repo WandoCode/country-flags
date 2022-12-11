@@ -1,5 +1,7 @@
-import useFetch from './useFetch'
 import { useEffect, useState } from 'react'
+import countryStore, { CountryRaw } from '../store/countryStore'
+
+export type Error = string | undefined
 
 type Country = {
   name: string
@@ -12,37 +14,42 @@ type Country = {
 
 type Countries = Country[]
 
-export interface CountryRaw {
-  name: { common: string; nativeName: { [key: string]: { common: string } } }
-  capital: string[]
-  region: string
-  population: number
-  flags: { svg: string }
-  altSpellings: string[]
-}
+function useGetCountries(): [Countries | undefined, boolean, Error] {
+  const [countries, setCountries] = useState<Countries>([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<Error>()
 
-const URL =
-  'https://restcountries.com/v3.1/all?fields=name,population,region,capital,flags'
+  const fetchCountries = async () => {
+    setLoading(true)
 
-function useGetCountries(): [Countries | undefined, boolean, string] {
-  const [countries, setCountries] = useState<Countries>()
-  const [datas, loading, error] = useFetch<[]>(URL)
+    const response = await countryStore.getCountries()
+
+    if (response?.countriesRaw) {
+      const mappedCountries = response.countriesRaw.map(
+        (countryRaw: CountryRaw) => {
+          return {
+            name: countryRaw.name.common,
+            population: countryRaw.population,
+            capital: countryRaw.capital[0],
+            region: countryRaw.region,
+            flag: countryRaw.flags.svg,
+            code: countryRaw.altSpellings[0],
+          }
+        }
+      )
+      setCountries(mappedCountries)
+    } else if (response?.error) {
+      setError(response.error)
+    }
+
+    setLoading(false)
+
+    return
+  }
 
   useEffect(() => {
-    if (datas) {
-      const mappedCountries = datas.map((countryRaw: CountryRaw) => {
-        return {
-          name: countryRaw.name.common,
-          population: countryRaw.population,
-          capital: countryRaw.capital[0],
-          region: countryRaw.region,
-          flag: countryRaw.flags.svg,
-          code: countryRaw.altSpellings[0],
-        }
-      })
-      setCountries(mappedCountries)
-    }
-  }, [datas])
+    fetchCountries()
+  }, [])
 
   return [countries, loading, error]
 }
