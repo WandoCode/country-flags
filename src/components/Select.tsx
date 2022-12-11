@@ -7,6 +7,7 @@ type Props = {
 //TODO: rendre le Select accessible
 function Select({ setAsValue }: Props) {
   const menuRef = useRef<HTMLUListElement>(null)
+  const btnRef = useRef<HTMLButtonElement>(null)
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenuOpening = () => {
@@ -31,7 +32,7 @@ function Select({ setAsValue }: Props) {
   const handleClickDocument = (e: MouseEvent) => {
     const target = e.target as HTMLElement
 
-    if (!menuRef.current?.contains(target)) {
+    if (!menuRef.current?.contains(target) && target !== btnRef.current) {
       document.removeEventListener('mousedown', handleClickDocument)
       setIsOpen(false)
     }
@@ -39,7 +40,11 @@ function Select({ setAsValue }: Props) {
 
   return (
     <div className="select">
-      <button className="select__button" onClick={toggleMenuOpening}>
+      <button
+        ref={btnRef}
+        className="select__button"
+        onClick={toggleMenuOpening}
+      >
         Filter by Region
       </button>
       <ul ref={menuRef} className={dorpdownClass} onClick={handleValue}>
