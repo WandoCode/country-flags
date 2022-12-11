@@ -1,0 +1,9 @@
+.select {
+  &__dropdown {
+    max-height: 0;
+
+    &--open {
+      max-height: unset;
+    }
+  }
+}
