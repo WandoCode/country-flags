@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import { SelectValue } from '../pages/Home'
 
 type Props = {
@@ -6,8 +6,13 @@ type Props = {
 }
 //TODO: rendre le Select accessible
 function Select({ setAsValue }: Props) {
+  const menuRef = useRef<HTMLUListElement>(null)
   const [isOpen, setIsOpen] = useState(false)
-  const handleClick = () => {
+
+  const toggleMenuOpening = () => {
+    if (!isOpen) document.addEventListener('mousedown', handleClickDocument)
+    if (isOpen) document.removeEventListener('mousedown', handleClickDocument)
+
     setIsOpen(!isOpen)
   }
 
@@ -22,12 +27,22 @@ function Select({ setAsValue }: Props) {
     const targetValue = node.getAttribute('data-value')
     setAsValue(targetValue !== null ? targetValue : undefined)
   }
+
+  const handleClickDocument = (e: MouseEvent) => {
+    const target = e.target as HTMLElement
+
+    if (!menuRef.current?.contains(target)) {
+      document.removeEventListener('mousedown', handleClickDocument)
+      setIsOpen(false)
+    }
+  }
+
   return (
     <div className="select">
-      <button className="select__button" onClick={handleClick}>
+      <button className="select__button" onClick={toggleMenuOpening}>
         Filter by Region
       </button>
-      <ul className={dorpdownClass} onClick={handleValue}>
+      <ul ref={menuRef} className={dorpdownClass} onClick={handleValue}>
         <li className="select__item" data-value="africa">
           Africa
         </li>
