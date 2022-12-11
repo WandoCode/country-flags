@@ -3,8 +3,8 @@ import countryStore, { CountryRaw } from '../store/countryStore'
 
 export type Error = string | undefined
 
-export type Country = {
-  name: string
+export interface Country {
+  [key: string]: string | number
   population: number
   region: string
   capital: string
@@ -12,7 +12,7 @@ export type Country = {
   code: string
 }
 
-type Countries = Country[]
+export type Countries = Country[]
 
 function useGetCountries(): [Countries, boolean, Error] {
   const [countries, setCountries] = useState<Countries>([])

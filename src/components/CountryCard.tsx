@@ -1,12 +1,13 @@
 import { Country } from '../hooks/useGetCountries'
 import { formatPopulation } from '../helpers/helpers'
+import { Link } from 'react-router-dom'
 
 type Props = { country: Country }
 
 function CountryCard({ country }: Props) {
   const populationFormatted = formatPopulation(country.population)
   return (
-    <div className="country-card">
+    <Link to={`details/${country.code}`} className="country-card">
       <img
         src={country.flag}
         alt={`Flag of $ ${country.name}`}
@@ -22,7 +23,7 @@ function CountryCard({ country }: Props) {
           <li className="country-card__capital">Capital: {country.capital}</li>
         </ul>
       </div>
-    </div>
+    </Link>
   )
 }
 
