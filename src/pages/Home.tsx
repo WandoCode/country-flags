@@ -3,17 +3,24 @@ import React, { useState, useEffect, useCallback } from 'react'
 import CountryCard from '../components/CountryCard'
 import searchCountry from '../features/searchCountry'
 import { Countries } from '../hooks/useGetCountries'
+import Select from '../components/Select'
+export type SelectValue = string | undefined
 
 function Home() {
   const [countries, loading, error] = useGetCountries()
   const [searchInput, setSearchInput] = useState('')
   const [filteredCountries, setFilteredCountries] = useState<Countries>([])
+  const [selectValue, setSelectValue] = useState<SelectValue>()
 
   useEffect(() => {
-    const search = searchCountry(searchInput, countries)
+    let searchString = ''
+    if (selectValue) searchString += selectValue
+    searchString += ` ${searchInput}`
+
+    const search = searchCountry(searchString, countries)
 
     setFilteredCountries(search)
-  }, [searchInput])
+  }, [searchInput, selectValue])
 
   const createCountryCard = useCallback(() => {
     return filteredCountries.map((country, index) => {
@@ -41,6 +48,7 @@ function Home() {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
+        <Select setAsValue={setSelectValue} />
       </form>
       {createCountryCard()}
     </div>
