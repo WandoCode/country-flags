@@ -24,6 +24,7 @@ export interface CountryLargeRaw extends CountryRaw {
 type GetCountries = Promise<
   { countriesRaw?: CountryRaw[]; error?: string } | undefined
 >
+type GetCountriesName = Promise<string[] | undefined>
 
 type GetCountry = Promise<
   { countryRaw?: CountryLargeRaw; error?: string } | undefined
@@ -44,28 +45,30 @@ const getCountries = async (): GetCountries => {
   }
 }
 
+const getCountriesName = async (countryCodes: string[]): GetCountriesName => {
+  return await Promise.all(
+    countryCodes.map(async (countryCode) => {
+      const urlCountryName = `https://restcountries.com/v3.1/alpha/${countryCode}?fields=name`
+
+      const response = await axios.get(urlCountryName)
+      return response.data.name.common
+    })
+  )
+}
 const getCountry = async (countryCode: string): GetCountry => {
   const url = `https://restcountries.com/v3.1/alpha/${countryCode}?fields=name,population,region,tld,subregion,languages,currencies,flags,borders`
 
   try {
     let rep: { countryRaw: CountryLargeRaw }
-    const countriesNames: string[] = []
 
     const response = await axios.get(url)
     rep = { countryRaw: response.data }
 
     const bordersCode = rep.countryRaw.borders
 
-    await Promise.all(
-      bordersCode.map(async (countryCode) => {
-        const urlCountryName = `https://restcountries.com/v3.1/alpha/${countryCode}?fields=name`
+    const countriesNames = await getCountriesName(bordersCode)
 
-        const response = await axios.get(urlCountryName)
-        countriesNames.push(response.data.name.common)
-      })
-    )
-
-    rep.countryRaw.borders = countriesNames
+    if (countriesNames) rep.countryRaw.borders = countriesNames
 
     return rep
   } catch (err: any) {

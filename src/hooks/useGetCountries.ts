@@ -3,7 +3,7 @@ import countryStore, { CountryRaw } from '../store/countryStore'
 
 export type Error = string | undefined
 
-type Country = {
+export type Country = {
   name: string
   population: number
   region: string
@@ -14,7 +14,7 @@ type Country = {
 
 type Countries = Country[]
 
-function useGetCountries(): [Countries | undefined, boolean, Error] {
+function useGetCountries(): [Countries, boolean, Error] {
   const [countries, setCountries] = useState<Countries>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error>()

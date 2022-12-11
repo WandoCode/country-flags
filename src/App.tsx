@@ -1,16 +1,12 @@
 import './stylesheets/main.scss'
-import { useEffect } from 'react'
-import useGetCountry from './hooks/useGetCountry'
-import useGetCountries from './hooks/useGetCountries'
+import Router from './Router'
 
 function App() {
-  const [datas, loading, error] = useGetCountry('BEL')
-
-  useEffect(() => {
-    console.log(datas)
-  }, [datas])
-
-  return <div className="App"></div>
+  return (
+    <div className="App">
+      <Router />
+    </div>
+  )
 }
 
 export default App
