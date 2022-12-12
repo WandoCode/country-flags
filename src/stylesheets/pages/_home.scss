@@ -6,10 +6,16 @@
   @include breakpoint(large) {
     gap: rem(48);
   }
+
   &__search {
     display: flex;
     flex-direction: column;
     gap: rem(40);
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
     @include breakpoint(large) {
       flex-direction: row;
@@ -21,6 +27,12 @@
     display: grid;
     gap: rem(40);
     justify-items: center;
+
+    @include breakpoint(medium) {
+      gap: rem(40) rem(10);
+      grid-template-columns: repeat(2, auto);
+      justify-content: space-around;
+    }
 
     @include breakpoint(large) {
       gap: rem(40) rem(10);

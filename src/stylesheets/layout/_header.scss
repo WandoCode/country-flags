@@ -14,9 +14,9 @@
     padding-inline: rem(16);
 
     @include breakpoint(large) {
-      padding-inline: rem(80);
+      padding-inline: rem(0);
 
-      max-width: $max-width;
+      max-width: min(calc(100% - 2rem), calc($max-width - 2 * rem(80)));
       margin-inline: auto;
     }
   }
