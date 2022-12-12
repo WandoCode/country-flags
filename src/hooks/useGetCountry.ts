@@ -13,6 +13,8 @@ type CountryLarge = {
   currencies: string
   languages: string[]
   borders: string[]
+  bordersName: string[]
+  img: string
 }
 
 function useGetCountry(
@@ -45,6 +47,8 @@ function useGetCountry(
         currencies: firstCurrency.name,
         languages: Object.values(countryRaw.languages),
         borders: countryRaw.borders,
+        bordersName: countryRaw.bordersName,
+        img: countryRaw.flags.svg,
       }
 
       setCountry(rep)

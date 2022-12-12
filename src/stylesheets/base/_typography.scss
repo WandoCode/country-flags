@@ -16,6 +16,14 @@ body {
 
 .h2 {
   font-size: var(--fs-700);
+  &--lg {
+    font-size: var(--fs-900);
+  }
+}
+
+.h3 {
+  font-size: var(--fs-800);
+  font-weight: var(--fw-bold);
 }
 
 input::placeholder {
@@ -33,4 +41,15 @@ input::placeholder {
 
 .bold {
   font-weight: var(--fw-bold);
+}
+
+.link {
+  font-size: var(--fs-500);
+  &--sm {
+    font-size: var(--fs-200);
+  }
+}
+
+.country-details {
+  font-size: var(--fs-500);
 }

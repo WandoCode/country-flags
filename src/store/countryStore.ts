@@ -18,6 +18,7 @@ export interface CountryLargeRaw extends CountryRaw {
   currencies: { [key: string]: { name: string } }
   languages: { [key: string]: string }
   borders: string[]
+  bordersName: string[]
   nativeName: { [key: string]: { common: string } }
 }
 
@@ -68,7 +69,7 @@ const getCountry = async (countryCode: string): GetCountry => {
 
     const countriesNames = await getCountriesName(bordersCode)
 
-    if (countriesNames) rep.countryRaw.borders = countriesNames
+    if (countriesNames) rep.countryRaw.bordersName = countriesNames
 
     return rep
   } catch (err: any) {

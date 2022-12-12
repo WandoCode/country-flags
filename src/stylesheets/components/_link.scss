@@ -1,0 +1,14 @@
+@use '../abstracts/' as *;
+
+.link {
+  cursor: pointer;
+  width: fit-content;
+  background-color: var(--clr-neutral-100);
+  box-shadow: 0px 0px 7px 0px hsla(0, 0%, 0%, 0.29);
+  padding: rem(6) rem(24);
+  border-radius: rem(2);
+  &--back {
+    display: inline-flex;
+    gap: rem(8);
+  }
+}
