@@ -25,4 +25,12 @@ input::placeholder {
 
 .select {
   font-size: var(--fs-200);
+
+  &__button {
+    color: inherit;
+  }
+}
+
+.bold {
+  font-weight: var(--fw-bold);
 }

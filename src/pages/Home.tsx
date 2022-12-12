@@ -39,18 +39,22 @@ function Home() {
   return (
     <div className="home">
       <form className="home__search" onSubmit={submitForm}>
-        <label htmlFor="search">{/* Todo: mettre imgage de loupe */}</label>
-        <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Search for a country..."
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-        />
+        <label htmlFor="search" className="input__label">
+          {/* Todo: mettre imgage de loupe */}
+
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search for a country..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            className="input"
+          />
+        </label>
         <Select setAsValue={setSelectValue} />
       </form>
-      {createCountryCard()}
+      <div className="country-cards">{createCountryCard()}</div>
     </div>
   )
 }

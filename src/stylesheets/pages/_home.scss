@@ -1,3 +1,31 @@
-// -----------------------------------------------------------------------------
-// This file contains styles that are specific to the home page.
-// -----------------------------------------------------------------------------
+@use '../abstracts' as *;
+.home {
+  display: grid;
+  gap: rem(32);
+
+  @include breakpoint(large) {
+    gap: rem(48);
+  }
+  &__search {
+    display: flex;
+    flex-direction: column;
+    gap: rem(40);
+
+    @include breakpoint(large) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .country-cards {
+    display: grid;
+    gap: rem(40);
+    justify-items: center;
+
+    @include breakpoint(large) {
+      gap: rem(40) rem(10);
+      grid-template-columns: repeat(4, auto);
+      justify-content: space-between;
+    }
+  }
+}

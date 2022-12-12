@@ -1,0 +1,31 @@
+@use '../abstracts' as *;
+
+.country-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  max-width: rem(264);
+  width: 100%;
+  height: rem(336);
+  border-radius: rem(5);
+  overflow: hidden;
+  box-shadow: 0px 0px 7px 2px hsla(0, 0%, 0%, 0.03);
+
+  & img {
+    height: rem(160);
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__text {
+    display: grid;
+    gap: rem(11);
+    padding: rem(21) rem(24) rem(40) rem(24);
+  }
+
+  &__details {
+    display: grid;
+    gap: rem(6);
+  }
+}

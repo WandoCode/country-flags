@@ -8,20 +8,25 @@ function CountryCard({ country }: Props) {
   const populationFormatted = formatPopulation(country.population)
   return (
     <Link to={`details/${country.code}`} className="country-card">
-      <img
-        src={country.flag}
-        alt={`Flag of $ ${country.name}`}
-        className="country-card__img"
-      />
       <div>
-        <h2 className="h2">{country.name}</h2>
-        <ul>
-          <li className="country-card__population">
-            Population: {populationFormatted}
-          </li>
-          <li className="country-card__region">Region: {country.region}</li>
-          <li className="country-card__capital">Capital: {country.capital}</li>
-        </ul>
+        <img src={country.flag} alt={`Flag of $ ${country.name}`} />
+      </div>
+      <div>
+        <div className="country-card__text">
+          <h2 className="h2">{country.name}</h2>
+          <ul className="country-card__details">
+            <li className="country-card__population">
+              <span className="bold"> Population: </span>
+              {populationFormatted}
+            </li>
+            <li className="country-card__region">
+              <span className="bold">Region:</span> {country.region}
+            </li>
+            <li className="country-card__capital">
+              <span className="bold">Capital:</span> {country.capital}
+            </li>
+          </ul>
+        </div>
       </div>
     </Link>
   )
