@@ -1,0 +1,52 @@
+@use '../abstracts/' as *;
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  height: 500px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--hide {
+    display: none;
+  }
+
+  &__container {
+    position: relative;
+    border-radius: 50rem;
+    height: rem(10);
+    width: rem(200);
+    overflow: hidden;
+    box-shadow: 0px 0px 2px 0px rgb(161, 161, 161);
+
+    &:before {
+      position: absolute;
+      content: '';
+      inset: 0;
+      height: 100%;
+      width: 300%;
+
+      background: linear-gradient(
+        0.25turn,
+        white,
+        rgb(161, 161, 161),
+        white,
+        rgb(161, 161, 161)
+      );
+      animation: load 2s forwards infinite linear;
+    }
+  }
+}
+
+@keyframes load {
+  0% {
+    translate: -67%;
+  }
+  100% {
+    translate: 0%;
+  }
+}

@@ -1,9 +1,10 @@
 import useGetCountries from '../hooks/useGetCountries'
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import CountryCard from '../components/CountryCard'
 import searchCountry from '../features/searchCountry'
 import { Countries } from '../hooks/useGetCountries'
 import Select from '../components/Select'
+
 export type SelectValue = string | undefined
 
 function Home() {
@@ -36,26 +37,42 @@ function Home() {
     e.preventDefault()
   }
 
-  return (
-    <div className="home">
-      <form className="home__search" onSubmit={submitForm}>
-        <label htmlFor="search" className="input__label">
-          {/* Todo: mettre imgage de loupe */}
+  const homeCall = useMemo(() => {
+    return loading ? 'home home--hide' : 'home'
+  }, [loading])
 
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Search for a country..."
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            className="input"
-          />
-        </label>
-        <Select setAsValue={setSelectValue} />
-      </form>
-      <div className="country-cards">{createCountryCard()}</div>
-    </div>
+  const loaderCall = useMemo(() => {
+    return loading ? 'loading' : 'loading loading--hide'
+  }, [loading])
+
+  return (
+    <>
+      <div className={loaderCall}>
+        <div className="loading__container">
+          <div className="loading__bar"></div>
+        </div>
+      </div>
+
+      <div className={homeCall}>
+        <form className="home__search" onSubmit={submitForm}>
+          <label htmlFor="search" className="input__label">
+            {/* Todo: mettre imgage de loupe */}
+
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search for a country..."
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              className="input"
+            />
+          </label>
+          <Select setAsValue={setSelectValue} />
+        </form>
+        <div className="country-cards">{createCountryCard()}</div>
+      </div>
+    </>
   )
 }
 
