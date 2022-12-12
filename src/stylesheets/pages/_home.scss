@@ -12,11 +12,6 @@
     max-width: min(calc($max-width - 2 * rem(80)), calc(100% - 2 * rem(16)));
   }
 
-  &--hide {
-    visibility: hidden;
-    z-index: -1;
-  }
-
   &__search {
     display: flex;
     flex-direction: column;

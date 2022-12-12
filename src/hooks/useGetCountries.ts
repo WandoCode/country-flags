@@ -33,7 +33,7 @@ function useGetCountries(): [Countries, boolean, Error] {
             capital: countryRaw.capital[0],
             region: countryRaw.region,
             flag: countryRaw.flags.svg,
-            code: countryRaw.altSpellings[0],
+            code: countryRaw.cca2,
           }
         }
       )

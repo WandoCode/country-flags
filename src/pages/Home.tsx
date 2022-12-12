@@ -37,23 +37,23 @@ function Home() {
     e.preventDefault()
   }
 
-  const homeCall = useMemo(() => {
-    return loading ? 'home home--hide' : 'home'
+  const homeClass = useMemo(() => {
+    return loading ? 'home hide-on-load' : 'home'
   }, [loading])
 
-  const loaderCall = useMemo(() => {
+  const loaderClass = useMemo(() => {
     return loading ? 'loading' : 'loading loading--hide'
   }, [loading])
 
   return (
     <>
-      <div className={loaderCall}>
+      <div className={loaderClass}>
         <div className="loading__container">
           <div className="loading__bar"></div>
         </div>
       </div>
 
-      <div className={homeCall}>
+      <div className={homeClass}>
         <form className="home__search" onSubmit={submitForm}>
           <label htmlFor="search" className="input__label">
             {/* Todo: mettre imgage de loupe */}

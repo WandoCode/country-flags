@@ -9,7 +9,7 @@ export interface CountryRaw {
   region: string
   population: number
   flags: { svg: string }
-  altSpellings: string[]
+  cca2: string
 }
 
 export interface CountryLargeRaw extends CountryRaw {
@@ -33,7 +33,7 @@ type GetCountry = Promise<
 
 const getCountries = async (): GetCountries => {
   const URL =
-    'https://restcountries.com/v3.1/all?fields=name,population,region,capital,flags'
+    'https://restcountries.com/v3.1/all?fields=name,population,region,capital,flags,cca2'
 
   try {
     const response = await axios.get(URL)
@@ -52,6 +52,7 @@ const getCountriesName = async (countryCodes: string[]): GetCountriesName => {
       const urlCountryName = `https://restcountries.com/v3.1/alpha/${countryCode}?fields=name`
 
       const response = await axios.get(urlCountryName)
+
       return response.data.name.common
     })
   )

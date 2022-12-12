@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import countryStore, { CountryLargeRaw } from '../store/countryStore'
+import countryStore from '../store/countryStore'
 import { Error } from './useGetCountries'
 
 type CountryLarge = {

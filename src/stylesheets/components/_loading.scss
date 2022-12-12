@@ -1,5 +1,10 @@
 @use '../abstracts/' as *;
 
+.hide-on-load {
+  visibility: hidden;
+  z-index: -1;
+}
+
 .loading {
   position: fixed;
   top: 50%;
