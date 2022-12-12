@@ -1,15 +1,30 @@
 import './stylesheets/main.scss'
 import Router from './Router'
 import { RouterProvider } from 'react-router-dom'
-import { useMemo, useContext } from 'react'
-import { ContextState } from './ContextProvider'
+import { useMemo, useContext, useEffect } from 'react'
+import { Context, ContextState } from './ContextProvider'
 
 function App() {
-  const { currMode } = useContext(ContextState)
+  const { currMode, setMode } = useContext(ContextState) as Context
 
   const themeId = useMemo(() => {
     return currMode === 'light' ? '' : 'dark'
   }, [currMode])
+
+  useEffect(() => {
+    let colorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+
+    setMode(colorScheme)
+
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', (event) => {
+        colorScheme = event.matches ? 'dark' : 'light'
+        setMode(colorScheme)
+      })
+  }, [])
 
   return (
     <div className="App" id={themeId}>
