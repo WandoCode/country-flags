@@ -5,6 +5,7 @@ import Layout from './pages/Layout'
 import CountryDetails from './pages/CountryDetails'
 import NotFound from './pages/NotFound'
 
+// TODO:
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Layout />}>
