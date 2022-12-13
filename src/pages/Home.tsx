@@ -24,6 +24,7 @@ function Home() {
   }, [searchInput, selectValue])
 
   const createCountryCard = useCallback(() => {
+    if (filteredCountries.length === 0) return 'No result found...'
     return filteredCountries.map((country, index) => {
       return <CountryCard country={country} key={index} />
     })

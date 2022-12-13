@@ -13,8 +13,16 @@
   background-color: var(--clr-neutral-300);
   transition: 0.1s;
 
+  @for $i from 1 to 20 {
+    &:nth-child(#{$i}) {
+      translate: -800% 0;
+      animation: slidein 0.5s ease-out forwards;
+      animation-delay: 0s + ($i/30);
+    }
+  }
+
   @include hover {
-    translate: 0 -3px;
+    scale: 101%;
   }
 
   & img {
@@ -32,5 +40,23 @@
   &__details {
     display: grid;
     gap: rem(6);
+  }
+}
+
+@keyframes slidein {
+  0% {
+    translate: -800% 0;
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+    rotate: 3deg;
+    translate: 5% 0;
+  }
+  100% {
+    opacity: 1;
+    rotate: 0deg;
+
+    translate: 0 0;
   }
 }
