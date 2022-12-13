@@ -65,6 +65,7 @@ function Select({ setAsValue }: Props) {
           const target = e.target as HTMLElement
           if (target.hasAttribute('data-value')) {
             const targetValue = target.getAttribute('data-value')
+
             toggleMenuOpening()
 
             changeValue(targetValue)
@@ -108,6 +109,7 @@ function Select({ setAsValue }: Props) {
   return (
     <div className="select">
       <button
+        type="button"
         ref={btnRef}
         className="select__button"
         onClick={toggleMenuOpening}
