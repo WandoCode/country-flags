@@ -3,7 +3,7 @@
  */
 @use '../abstracts/' as *;
 
-body {
+.App {
   color: var(--clr-neutral-800);
   font-family: $text-font-stack;
   font-size: var(--fs-400);
@@ -26,9 +26,18 @@ body {
   font-weight: var(--fw-bold);
 }
 
-input::placeholder {
-  font-size: var(--fs-200);
-  color: var(--clr-neutral-400);
+input {
+  color: var(--clr-neutral-800);
+
+  &::placeholder {
+    font-size: var(--fs-200);
+    color: var(--clr-neutral-500);
+  }
+}
+
+.btn {
+  color: inherit;
+  font-size: var(--fs-300);
 }
 
 .select {

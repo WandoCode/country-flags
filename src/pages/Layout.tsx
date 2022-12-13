@@ -9,8 +9,8 @@ function Layout() {
       <header className="header">
         <div className="header__wrapper">
           <h1 className="h1">Where in the world?</h1>
+          <DarkMode />
         </div>
-        <DarkMode />
       </header>
       <main className="main">
         <Outlet />

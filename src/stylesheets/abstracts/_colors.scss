@@ -4,16 +4,34 @@
 $colors: (
   primary: (),
   neutral: (
-    100: hsl(0, 0%, 100%),
     200: hsl(0, 0%, 98%),
-    400: hsl(0, 0%, 77%),
+    300: hsl(0, 0%, 100%),
+    500: hsl(0, 0%, 77%),
     800: hsl(200, 15%, 8%),
   ),
 );
 
+$dark: (
+  primary: (),
+  neutral: (
+    200: hsl(209, 23%, 22%),
+    300: hsl(209, 23%, 22%),
+    400: hsl(207, 26%, 17%),
+    500: hsl(0, 0%, 100%),
+    800: hsl(0, 0%, 100%),
+  ),
+);
 :root {
   /// Build css custom variables for colors
   @each $color-type, $shades in $colors {
+    @each $shade, $color in $shades {
+      --clr-#{$color-type}-#{$shade}: #{$color};
+    }
+  }
+}
+
+#dark {
+  @each $color-type, $shades in $dark {
     @each $shade, $color in $shades {
       --clr-#{$color-type}-#{$shade}: #{$color};
     }

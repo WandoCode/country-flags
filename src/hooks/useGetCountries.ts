@@ -16,7 +16,7 @@ export type Countries = Country[]
 
 function useGetCountries(): [Countries, boolean, Error] {
   const [countries, setCountries] = useState<Countries>([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState<Error>()
 
   const fetchCountries = async () => {

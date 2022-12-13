@@ -1,9 +1,14 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the button component.
-// -----------------------------------------------------------------------------
-
 @use '../abstracts/' as *;
 
-.button {
-  background-color: red;
+.btn {
+  display: flex;
+  gap: rem(8);
+  align-items: center;
+  background-color: transparent;
+  width: max-content;
+  border: none;
+
+  & img {
+    padding-bottom: rem(2);
+  }
 }

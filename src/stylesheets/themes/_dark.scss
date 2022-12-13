@@ -1,0 +1,24 @@
+// -----------------------------------------------------------------------------
+// When having several themes, this file contains everything related to the
+// default one.
+// -----------------------------------------------------------------------------
+
+.App#dark {
+  background-color: var(--clr-neutral-400);
+}
+
+#dark {
+  & .select__item:hover {
+    background-color: var(--clr-neutral-400);
+  }
+
+  & .link {
+    &--back img {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  & .select img {
+    filter: brightness(0) invert(1);
+  }
+}

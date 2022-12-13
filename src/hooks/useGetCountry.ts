@@ -21,7 +21,7 @@ function useGetCountry(
   countryCode: string
 ): [CountryLarge | undefined, boolean, Error] {
   const [country, setCountry] = useState<CountryLarge>()
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState<Error>()
 
   const fetchCountryInfos = async () => {

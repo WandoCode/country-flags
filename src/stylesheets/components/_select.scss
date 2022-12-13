@@ -13,7 +13,7 @@
     justify-content: space-between;
     align-items: center;
     min-width: rem(200);
-    background-color: var(--clr-neutral-100);
+    background-color: var(--clr-neutral-300);
     border: none;
     border-radius: rem(5);
     padding: rem(14) rem(19) rem(14) rem(24);
@@ -37,7 +37,7 @@
     margin-top: rem(4);
     z-index: 1;
     width: 100%;
-    background-color: var(--clr-neutral-100);
+    background-color: var(--clr-neutral-300);
     position: absolute;
     overflow: hidden;
     box-shadow: $drop-shaddow;
@@ -47,7 +47,7 @@
       padding-left: rem(24);
 
       &:hover {
-        background-color: var(--clr-neutral-400);
+        background-color: var(--clr-neutral-500);
       }
       &:first-child {
         margin-top: rem(15);

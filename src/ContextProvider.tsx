@@ -9,10 +9,7 @@ export interface Context {
   setMode: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const ContextState = createContext({
-  currMode: 'light',
-  toggleMode: () => {},
-})
+export const ContextState = createContext({})
 
 function ContextProvider({ children }: Props) {
   const [mode, setMode] = useState<string>('light')
@@ -23,7 +20,9 @@ function ContextProvider({ children }: Props) {
 
   return (
     <ContextState.Provider
-      value={{ currMode: mode, toggleMode, setMode: setMode } as Context}
+      value={
+        { currMode: mode, toggleMode: toggleMode, setMode: setMode } as Context
+      }
     >
       {children}
     </ContextState.Provider>

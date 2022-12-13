@@ -41,6 +41,7 @@
 
     @include breakpoint(large) {
       height: 100%;
+      max-height: rem(500);
 
       grid-template-rows: repeat(4, 1fr);
       grid-template-columns: 1fr 1fr;
