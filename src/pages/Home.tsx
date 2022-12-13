@@ -70,7 +70,7 @@ function Home() {
           </label>
           <Select setAsValue={setSelectValue} />
         </form>
-        <div className="country-cards">{createCountryCard()}</div>
+        <section className="country-cards">{createCountryCard()}</section>
       </div>
     </>
   )

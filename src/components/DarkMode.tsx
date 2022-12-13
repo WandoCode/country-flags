@@ -1,6 +1,6 @@
 import moonIcon from '../assets/moon.svg'
 import filledMoonIcon from '../assets/full-moon.svg'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { ContextState, Context } from '../ContextProvider'
 
 function DarkMode() {
