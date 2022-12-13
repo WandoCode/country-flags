@@ -135,60 +135,23 @@ function Select({ setAsValue }: Props) {
         className={dorpdownClass}
         onClick={handleValue}
         id="select-dropdown"
-        role="menu"
       >
-        <li
-          className="select__item"
-          data-value="africa"
-          role="option"
-          aria-selected={currValue === 'africa'}
-          tabIndex={0}
-        >
+        <li className="select__item" data-value="africa" tabIndex={0}>
           Africa
         </li>
-        <li
-          className="select__item"
-          data-value="america"
-          role="option"
-          aria-selected={currValue === 'america'}
-          tabIndex={0}
-        >
+        <li className="select__item" data-value="america" tabIndex={0}>
           America
         </li>
-        <li
-          className="select__item"
-          data-value="asia"
-          role="option"
-          aria-selected={currValue === 'asia'}
-          tabIndex={0}
-        >
+        <li className="select__item" data-value="asia" tabIndex={0}>
           Asia
         </li>
-        <li
-          className="select__item"
-          data-value="europe"
-          role="option"
-          aria-selected={currValue === 'europe'}
-          tabIndex={0}
-        >
+        <li className="select__item" data-value="europe" tabIndex={0}>
           Europe
         </li>
-        <li
-          className="select__item"
-          data-value="oceania"
-          role="option"
-          aria-selected={currValue === 'oceania'}
-          tabIndex={0}
-        >
+        <li className="select__item" data-value="oceania" tabIndex={0}>
           Oceania
         </li>
-        <li
-          className="select__item"
-          role="option"
-          data-value="undefined"
-          aria-selected={currValue === 'undefined'}
-          tabIndex={0}
-        >
+        <li className="select__item" data-value="undefined" tabIndex={0}>
           All region
         </li>
       </ul>
