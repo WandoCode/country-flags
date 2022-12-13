@@ -6,6 +6,14 @@ type Props = {
   setAsValue: React.Dispatch<React.SetStateAction<SelectValue>>
 }
 
+const regionName: Record<string, string> = {
+  america: 'America',
+  asia: 'Asia',
+  europe: 'Europe',
+  oceania: 'Oceania',
+  africa: 'Africa',
+}
+
 function Select({ setAsValue }: Props) {
   const menuRef = useRef<HTMLUListElement>(null)
   const btnRef = useRef<HTMLButtonElement>(null)
@@ -107,7 +115,10 @@ function Select({ setAsValue }: Props) {
         aria-controls="select-dropdown"
         aria-haspopup="true"
       >
-        Filter by Region
+        {currValue && currValue !== 'undefined'
+          ? regionName[currValue]
+          : 'Filter by Region'}
+
         <img ref={imgRef} src={expandIcon} alt="" className={iconClass} />
       </button>
       <ul

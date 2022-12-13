@@ -11,6 +11,11 @@
   overflow: hidden;
   box-shadow: 0px 0px 7px 2px hsla(0, 0%, 0%, 0.03);
   background-color: var(--clr-neutral-300);
+  transition: 0.1s;
+
+  @include hover {
+    translate: 0 -3px;
+  }
 
   & img {
     height: rem(160);

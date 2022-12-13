@@ -34,13 +34,13 @@
     justify-items: center;
 
     @include breakpoint(medium) {
-      gap: rem(40) rem(10);
+      gap: rem(75) rem(10);
       grid-template-columns: repeat(2, auto);
       justify-content: space-around;
     }
 
     @include breakpoint(large) {
-      gap: rem(40) rem(10);
+      gap: rem(75) rem(10);
       grid-template-columns: repeat(4, auto);
       justify-content: space-between;
     }

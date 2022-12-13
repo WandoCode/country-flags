@@ -46,9 +46,10 @@
     & .select__item {
       padding-left: rem(24);
 
-      &:hover {
+      @include hover {
         background-color: var(--clr-neutral-500);
       }
+
       &:first-child {
         margin-top: rem(15);
       }
