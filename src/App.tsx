@@ -8,7 +8,7 @@ function App() {
   const { currMode, setMode } = useContext(ContextState) as Context
 
   const themeId = useMemo(() => {
-    return currMode === 'light' ? '' : 'dark'
+    return currMode === 'light' ? undefined : 'dark'
   }, [currMode])
 
   useEffect(() => {

@@ -8,10 +8,8 @@ function DarkMode() {
 
   return (
     <button className="btn btn--dark-mode" onClick={() => toggleMode()}>
-      {currMode === 'dark' && (
-        <img src={filledMoonIcon} alt="Moon" loading="lazy" />
-      )}
-      {currMode === 'light' && <img src={moonIcon} alt="Moon" loading="lazy" />}
+      {currMode === 'dark' && <img src={filledMoonIcon} alt="Moon" />}
+      {currMode === 'light' && <img src={moonIcon} alt="Moon" />}
       Dark Mode
     </button>
   )
