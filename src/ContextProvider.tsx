@@ -3,6 +3,7 @@ import React, { createContext, useState } from 'react'
 interface Props {
   children: JSX.Element
 }
+
 export interface Context {
   currMode: string
   toggleMode: () => void

@@ -57,6 +57,7 @@ const getCountriesName = async (countryCodes: string[]): GetCountriesName => {
     })
   )
 }
+
 const getCountry = async (countryCode: string): GetCountry => {
   const url = `https://restcountries.com/v3.1/alpha/${countryCode}?fields=name,population,region,tld,subregion,languages,currencies,flags,borders`
 

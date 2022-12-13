@@ -24,25 +24,34 @@ function Select({ setAsValue }: Props) {
 
   const toggleMenuOpening = () => {
     if (!isOpen) {
-      document.addEventListener('mousedown', handleClickDocument)
-      document.addEventListener('keydown', handleKeyDown)
+      addListeners()
     }
     if (isOpen) {
-      document.removeEventListener('mousedown', handleClickDocument)
-      document.removeEventListener('keydown', handleKeyDown)
+      removeListeners()
     }
 
     setIsOpen(!isOpen)
   }
 
+  const addListeners = () => {
+    document.addEventListener('mousedown', handleClickDocument)
+    document.addEventListener('keydown', handleKeyDown)
+  }
+
+  const removeListeners = () => {
+    document.removeEventListener('mousedown', handleClickDocument)
+    document.removeEventListener('keydown', handleKeyDown)
+  }
+
   const changeValue = (value: string | null) => {
     let finalValue = undefined
+
     if (value !== null && value !== 'undefined') {
       finalValue = value
     }
 
     setAsValue(finalValue)
-    setcurrValue(value !== null ? value : undefined)
+    setcurrValue(value === 'undefined' ? value : undefined)
   }
 
   const handleValue = (e: React.MouseEvent) => {
@@ -54,6 +63,11 @@ function Select({ setAsValue }: Props) {
     toggleMenuOpening()
   }
 
+  const closeMenu = () => {
+    removeListeners()
+    setIsOpen(false)
+  }
+
   const handleKeyDown = (e: globalThis.KeyboardEvent) => {
     switch (e.key) {
       case 'Escape':
@@ -63,6 +77,7 @@ function Select({ setAsValue }: Props) {
       case 'Enter':
         if (e.target) {
           const target = e.target as HTMLElement
+
           if (target.hasAttribute('data-value')) {
             const targetValue = target.getAttribute('data-value')
 
@@ -77,23 +92,15 @@ function Select({ setAsValue }: Props) {
         break
     }
   }
+
   const handleClickDocument = (e: MouseEvent) => {
     const target = e.target as HTMLElement
-
-    if (
+    const targetIsInNotMenu =
       !menuRef.current?.contains(target) &&
       target !== btnRef.current &&
       target !== imgRef.current
-    ) {
-      closeMenu()
-    }
-  }
 
-  const closeMenu = () => {
-    document.removeEventListener('mousedown', handleClickDocument)
-    document.removeEventListener('keydown', handleKeyDown)
-
-    setIsOpen(false)
+    if (targetIsInNotMenu) closeMenu()
   }
 
   const dorpdownClass = useMemo(() => {

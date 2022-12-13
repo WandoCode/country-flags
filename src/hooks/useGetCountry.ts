@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import countryStore from '../store/countryStore'
+import countryStore, { CountryLargeRaw } from '../store/countryStore'
 import { Error } from './useGetCountries'
 
 type CountryLarge = {
@@ -33,23 +33,7 @@ function useGetCountry(
     else if (response?.countryRaw) {
       const countryRaw = response.countryRaw
 
-      const firstCurrency = Object.values(countryRaw.currencies)[0]
-      const firstNativeName = Object.values(countryRaw.name.nativeName)[0]
-
-      const rep: CountryLarge = {
-        name: countryRaw.name.common,
-        nativeName: firstNativeName?.common || '',
-        region: countryRaw.region,
-        subregion: countryRaw.subregion,
-        population: countryRaw.population,
-        capital: countryRaw.capital[0],
-        tld: countryRaw.tld[0],
-        currencies: firstCurrency?.name || '',
-        languages: Object.values(countryRaw.languages),
-        borders: countryRaw.borders,
-        bordersName: countryRaw.bordersName,
-        img: countryRaw.flags.svg,
-      }
+      const rep = buildCountryLargeObject(countryRaw)
 
       setCountry(rep)
     }
@@ -63,6 +47,26 @@ function useGetCountry(
   }, [countryCode])
 
   return [country, loading, error]
+}
+
+const buildCountryLargeObject = (rawDatas: CountryLargeRaw) => {
+  const firstCurrency = Object.values(rawDatas.currencies)[0]
+  const firstNativeName = Object.values(rawDatas.name.nativeName)[0]
+
+  return {
+    name: rawDatas.name.common,
+    nativeName: firstNativeName?.common || '',
+    region: rawDatas.region,
+    subregion: rawDatas.subregion,
+    population: rawDatas.population,
+    capital: rawDatas.capital[0],
+    tld: rawDatas.tld[0],
+    currencies: firstCurrency?.name || '',
+    languages: Object.values(rawDatas.languages),
+    borders: rawDatas.borders,
+    bordersName: rawDatas.bordersName,
+    img: rawDatas.flags.svg,
+  }
 }
 
 export default useGetCountry

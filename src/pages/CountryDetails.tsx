@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { useState, useMemo, useEffect } from 'react'
+import { useMemo } from 'react'
 import useGetCountry from '../hooks/useGetCountry'
 import { formatPopulation } from '../helpers/helpers'
 import backIcon from '../assets/back.svg'
@@ -17,10 +17,6 @@ function CountryDetails() {
     return langString?.slice(0, -2)
   }, [country])
 
-  const populationFormatted = useMemo(() => {
-    if (country?.population) return formatPopulation(country.population)
-  }, [country])
-
   const bordersDOM = useMemo(() => {
     if (country?.borders.length === 0) return '/'
     if (country?.borders)
@@ -35,6 +31,10 @@ function CountryDetails() {
           </Link>
         )
       })
+  }, [country])
+
+  const populationFormatted = useMemo(() => {
+    if (country?.population) return formatPopulation(country.population)
   }, [country])
 
   const loaderClass = useMemo(() => {

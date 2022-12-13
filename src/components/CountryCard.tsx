@@ -6,6 +6,7 @@ type Props = { country: Country }
 
 function CountryCard({ country }: Props) {
   const populationFormatted = formatPopulation(country.population)
+
   return (
     <Link to={`details/${country.code}`} className="country-card">
       <div>

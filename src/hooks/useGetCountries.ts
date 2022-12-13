@@ -25,25 +25,13 @@ function useGetCountries(): [Countries, boolean, Error] {
     const response = await countryStore.getCountries()
 
     if (response?.countriesRaw) {
-      const mappedCountries = response.countriesRaw.map(
-        (countryRaw: CountryRaw) => {
-          return {
-            name: countryRaw.name.common,
-            population: countryRaw.population,
-            capital: countryRaw.capital[0],
-            region: countryRaw.region,
-            flag: countryRaw.flags.svg,
-            code: countryRaw.cca2,
-          }
-        }
-      )
+      const mappedCountries = response.countriesRaw.map(buildCountryObject)
       setCountries(mappedCountries)
     } else if (response?.error) {
       setError(response.error)
     }
 
     setLoading(false)
-
     return
   }
 
@@ -52,6 +40,17 @@ function useGetCountries(): [Countries, boolean, Error] {
   }, [])
 
   return [countries, loading, error]
+}
+
+const buildCountryObject = (rawDatas: CountryRaw) => {
+  return {
+    name: rawDatas.name.common,
+    population: rawDatas.population,
+    capital: rawDatas.capital[0],
+    region: rawDatas.region,
+    flag: rawDatas.flags.svg,
+    code: rawDatas.cca2,
+  }
 }
 
 export default useGetCountries
