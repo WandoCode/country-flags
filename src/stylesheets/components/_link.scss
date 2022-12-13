@@ -1,12 +1,17 @@
 @use '../abstracts/' as *;
 
 .link {
-  cursor: pointer;
   width: fit-content;
-  background-color: var(--clr-neutral-300);
-  box-shadow: 0px 0px 7px 0px hsla(0, 0%, 0%, 0.29);
+
   padding: rem(6) rem(24);
+
+  cursor: pointer;
+
+  background-color: var(--clr-neutral-300);
+
   border-radius: rem(2);
+  box-shadow: 0px 0px 7px 0px hsla(0, 0%, 0%, 0.29);
+
   transition: 0.1s;
 
   @include hover {
@@ -16,8 +21,11 @@
   &--back {
     display: inline-flex;
     gap: rem(8);
-    box-shadow: none;
+
     background-color: var(--clr-neutral-200);
+
+    box-shadow: none;
+
     @include hover {
       translate: unset;
     }
@@ -25,7 +33,9 @@
 
   &--inline {
     padding: 0 rem(5);
+
     background-color: transparent;
+
     box-shadow: none;
   }
 }

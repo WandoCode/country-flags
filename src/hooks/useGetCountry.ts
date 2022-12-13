@@ -38,13 +38,13 @@ function useGetCountry(
 
       const rep: CountryLarge = {
         name: countryRaw.name.common,
-        nativeName: firstNativeName.common,
+        nativeName: firstNativeName?.common || '',
         region: countryRaw.region,
         subregion: countryRaw.subregion,
         population: countryRaw.population,
         capital: countryRaw.capital[0],
         tld: countryRaw.tld[0],
-        currencies: firstCurrency.name,
+        currencies: firstCurrency?.name || '',
         languages: Object.values(countryRaw.languages),
         borders: countryRaw.borders,
         bordersName: countryRaw.bordersName,

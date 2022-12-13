@@ -2,14 +2,17 @@
 .home {
   display: grid;
   gap: rem(32);
+
   max-width: $max-width;
+
   padding: rem(24) rem(16);
   margin: auto;
 
   @include breakpoint(large) {
     gap: rem(48);
-    padding: rem(48) 0;
     max-width: min(calc($max-width - 2 * rem(80)), calc(100% - 2 * rem(16)));
+
+    padding: rem(48) 0;
   }
 
   &__search {

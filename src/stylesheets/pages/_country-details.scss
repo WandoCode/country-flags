@@ -1,17 +1,20 @@
 @use '../abstracts/' as *;
 
 .country-details {
-  padding: rem(40) rem(26);
-
   display: grid;
   gap: rem(64);
+
   max-width: $max-width;
+
   margin: auto;
+  padding: rem(40) rem(26);
 
   @include breakpoint(large) {
     gap: rem(80);
-    padding: rem(80) 0;
+
     max-width: min(calc($max-width - 2 * rem(80)), calc(100% - 2 * rem(16)));
+
+    padding: rem(80) 0;
   }
 
   &__container {
@@ -20,17 +23,19 @@
 
     @include breakpoint(large) {
       gap: rem(144);
-      min-height: rem(400);
-
       grid-template-columns: 1fr 1fr;
       align-items: center;
+
+      min-height: rem(400);
     }
   }
 
   &__img {
     border-radius: rem(6);
+
     @include breakpoint(large) {
       align-self: stretch;
+
       object-fit: cover;
     }
   }
@@ -40,11 +45,11 @@
     grid-template-rows: auto 1fr 1fr auto;
 
     @include breakpoint(large) {
-      height: 100%;
-      max-height: rem(500);
-
       grid-template-rows: repeat(4, 1fr);
       grid-template-columns: 1fr 1fr;
+
+      height: 100%;
+      max-height: rem(500);
     }
 
     & .h2 {
@@ -63,12 +68,15 @@
     display: grid;
     gap: rem(10);
     align-content: center;
+
     min-height: rem(160);
 
     @include breakpoint(large) {
       gap: rem(13);
-      height: 100%;
       align-content: flex-start;
+
+      height: 100%;
+
       &:nth-child(2) {
         grid-column: 1 / 2;
         grid-row: 2 / 4;

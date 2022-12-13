@@ -2,21 +2,28 @@
 
 .select {
   $drop-shaddow: 0px 2px 9px 0px hsla(0, 0%, 0%, 0.05);
-  cursor: pointer;
+
   position: relative;
+
   width: fit-content;
 
-  &__button {
-    cursor: pointer;
+  cursor: pointer;
 
+  &__button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     min-width: rem(200);
+
+    padding: rem(14) rem(19) rem(14) rem(24);
+
+    cursor: pointer;
+
     background-color: var(--clr-neutral-300);
+
     border: none;
     border-radius: rem(5);
-    padding: rem(14) rem(19) rem(14) rem(24);
     box-shadow: $drop-shaddow;
   }
 
@@ -29,18 +36,24 @@
   }
 
   &__dropdown {
-    max-height: 0;
+    z-index: 1;
+
+    position: absolute;
 
     display: grid;
     gap: rem(6);
-    border-radius: rem(5);
-    margin-top: rem(4);
-    z-index: 1;
+
+    max-height: 0;
     width: 100%;
-    background-color: var(--clr-neutral-300);
-    position: absolute;
+
     overflow: hidden;
+    margin-top: rem(4);
+
+    background-color: var(--clr-neutral-300);
+
+    border-radius: rem(5);
     box-shadow: $drop-shaddow;
+
     transition: max-height 0.2s ease-out;
 
     & .select__item {
@@ -53,12 +66,14 @@
       &:first-child {
         margin-top: rem(15);
       }
+
       &:last-child {
         margin-bottom: rem(15);
       }
     }
     &--open {
       max-height: 18rem;
+
       transition: max-height 0.2s ease-in;
     }
   }

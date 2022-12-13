@@ -3,21 +3,26 @@
 .header {
   display: flex;
   align-items: center;
-  box-shadow: 0px 2px 4px 0px hsla(0, 0%, 0%, 0.06);
+
   min-height: rem(80);
+
   background-color: var(--clr-neutral-300);
+
+  box-shadow: 0px 2px 4px 0px hsla(0, 0%, 0%, 0.06);
 
   &__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     width: 100%;
+
     padding-inline: rem(16);
 
     @include breakpoint(large) {
-      padding-inline: rem(0);
-
       max-width: min(calc(100% - 2rem), calc($max-width - 2 * rem(80)));
+
+      padding-inline: rem(0);
       margin-inline: auto;
     }
   }

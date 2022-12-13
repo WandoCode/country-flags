@@ -32,11 +32,6 @@ $weights: (
 );
 
 :root {
-  /// Build css custom variables for font-size
-  /// It integer a media query for each font (mobile-first)
-  /// Une autre solution serait d'utiliser clamp()
-  /// ==> clamp(valFixMinEnREM, valFixEnREMPlusValEnVW, valFixMaxEnREM)
-  /// ==> valFixMinEnREM sont les valeur pour 'small' et valFixMaxEnREM sont les valeurs pour 'large'
   @each $screen-size, $font-size in $scale {
     @if $screen-size == 'sm' {
       @each $size, $value in $font-size {
