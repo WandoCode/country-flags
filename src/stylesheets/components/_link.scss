@@ -22,4 +22,10 @@
       translate: unset;
     }
   }
+
+  &--inline {
+    padding: 0 rem(5);
+    background-color: transparent;
+    box-shadow: none;
+  }
 }

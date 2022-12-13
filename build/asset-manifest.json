@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/country-flags/static/css/main.e5a2a7ec.css",
-    "main.js": "/country-flags/static/js/main.c4c57393.js",
+    "main.css": "/country-flags/static/css/main.a7629394.css",
+    "main.js": "/country-flags/static/js/main.37857104.js",
     "index.html": "/country-flags/index.html",
     "static/media/search.svg": "/country-flags/static/media/search.1c8ae97ebd0dbc6848fb.svg",
     "static/media/moon.svg": "/country-flags/static/media/moon.b3bfe04e62fcbcc04727205589a48110.svg",
     "static/media/full-moon.svg": "/country-flags/static/media/full-moon.b9380f0ea2e6a8ec959b338b7b6ed49c.svg",
     "static/media/back.svg": "/country-flags/static/media/back.04ae515fd6151b10d0fef68f78e2fdca.svg",
     "static/media/expand-more.svg": "/country-flags/static/media/expand-more.4da05b124871cd6e2ba37c2449e73120.svg",
-    "main.e5a2a7ec.css.map": "/country-flags/static/css/main.e5a2a7ec.css.map",
-    "main.c4c57393.js.map": "/country-flags/static/js/main.c4c57393.js.map"
+    "main.a7629394.css.map": "/country-flags/static/css/main.a7629394.css.map",
+    "main.37857104.js.map": "/country-flags/static/js/main.37857104.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5a2a7ec.css",
-    "static/js/main.c4c57393.js"
+    "static/css/main.a7629394.css",
+    "static/js/main.37857104.js"
   ]
 }

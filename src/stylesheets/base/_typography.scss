@@ -57,6 +57,13 @@ input {
   &--sm {
     font-size: var(--fs-200);
   }
+  &--inline {
+    font-size: var(--fs-400);
+    text-decoration: underline;
+    @include hover {
+      color: var(--clr-neutral-500);
+    }
+  }
 }
 
 .country-details {

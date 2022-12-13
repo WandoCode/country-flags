@@ -180,7 +180,7 @@ function Select({ setAsValue }: Props) {
           aria-selected={currValue === 'undefined'}
           tabIndex={0}
         >
-          None
+          All region
         </li>
       </ul>
     </div>
