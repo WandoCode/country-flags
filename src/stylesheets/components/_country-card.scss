@@ -17,7 +17,9 @@
   transition: 0.1s;
 
   // Slide animation start with a delay of n/30 for the n-th child
-  @for $i from 1 to 20 {
+  $max: 9;
+
+  @for $i from 1 to $max {
     &:nth-child(#{$i}) {
       translate: -800% 0;
       animation: slidein 0.5s ease-out forwards;
